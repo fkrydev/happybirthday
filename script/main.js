@@ -324,3 +324,11 @@ const resolveFetch = () => {
     resolve("Fetch done!");
   });
 };
+
+window.addEventListener("load", () => {
+  setTimeout(playSong, 1000);
+});
+
+function playSong() {
+  document.querySelector(".song").play();
+}
