@@ -1,23 +1,23 @@
 // trigger to play music in the background with sweetalert
-window.addEventListener("load", () => {
-  // Swal.fire({
-  //   title: 'Do you want to play music in the background?',
-  //   // text: "You won't be able to revert this!",
-  //   icon: 'warning',
-  //   showCancelButton: true,
-  //   confirmButtonColor: '#3085d6',
-  //   cancelButtonColor: '#d33',
-  //   confirmButtonText: 'Yes',
-  //   cancelButtonText: 'No',
-  // }).then((result) => {
-  //   if (result.isConfirmed) {
-  //   } else {
-  //     resolveFetch().then(animationTimeline());
-  //   }
-  // });
-  // document.querySelector(".song").play();
-  resolveFetch().then(animationTimeline());
-});
+// window.addEventListener("load", () => {
+//   // Swal.fire({
+//   //   title: 'Do you want to play music in the background?',
+//   //   // text: "You won't be able to revert this!",
+//   //   icon: 'warning',
+//   //   showCancelButton: true,
+//   //   confirmButtonColor: '#3085d6',
+//   //   cancelButtonColor: '#d33',
+//   //   confirmButtonText: 'Yes',
+//   //   cancelButtonText: 'No',
+//   // }).then((result) => {
+//   //   if (result.isConfirmed) {
+//   //   } else {
+//   //     resolveFetch().then(animationTimeline());
+//   //   }
+//   // });
+//   // document.querySelector(".song").play();
+//   resolveFetch().then(animationTimeline());
+// });
 
 // animation timeline
 const animationTimeline = () => {
@@ -326,7 +326,24 @@ const resolveFetch = () => {
 };
 
 window.addEventListener("load", () => {
-  setTimeout(playSong, 1000);
+  Swal.fire({
+    title: "Mau pake musik kah?",
+    // text: "You won't be able to revert this!",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    confirmButtonText: "Yes",
+    cancelButtonText: "No",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      document.querySelector(".song").play();
+      setTimeout(playSong, 1000);
+      resolveFetch().then(animationTimeline());
+    } else {
+      resolveFetch().then(animationTimeline());
+    }
+  });
 });
 
 function playSong() {
